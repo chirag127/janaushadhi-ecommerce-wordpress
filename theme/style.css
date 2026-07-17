@@ -1,0 +1,182 @@
+/*
+Theme Name:   Jan Aushadhi Child
+Theme URI:    https://example.com/janaushadhi
+Description:  Child theme for the Jan Aushadhi generic-medicines ecommerce store. Built on Astra. Pharmacy/healthcare palette, WooCommerce + Elementor friendly, mobile-first, light/dark mode via CSS custom properties.
+Author:       Jan Aushadhi Store
+Template:     astra
+Version:      1.0.0
+License:      GNU General Public License v2 or later
+License URI:  https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  janaushadhi-child
+Tags:         woocommerce, elementor, pharmacy, healthcare, e-commerce
+*/
+
+/* =========================================================================
+   1. DESIGN TOKENS - pharmacy / healthcare palette (WCAG AA aware)
+   ========================================================================= */
+:root {
+  --ja-primary:        #1B7A43;
+  --ja-primary-dark:   #146034;
+  --ja-primary-light:  #2E9E5B;
+  --ja-secondary:      #0F6FB8;
+  --ja-secondary-dark: #0B568F;
+  --ja-accent:         #F5A623;
+
+  --ja-success: #2E9E5B;
+  --ja-warning: #E8A100;
+  --ja-danger:  #C0392B;
+  --ja-info:    #0F6FB8;
+
+  --ja-bg:          #FFFFFF;
+  --ja-bg-alt:      #F4F8F6;
+  --ja-surface:     #FFFFFF;
+  --ja-border:      #E2E8E5;
+  --ja-text:        #1A2B22;
+  --ja-text-muted:  #52605A;
+  --ja-link:        #0F6FB8;
+
+  --ja-font-heading: "Poppins", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ja-font-body:    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --ja-fs-base: 16px;
+  --ja-lh-base: 1.65;
+  --ja-lh-heading: 1.25;
+
+  --ja-radius: 10px;
+  --ja-radius-sm: 6px;
+  --ja-shadow: 0 2px 8px rgba(26, 43, 34, 0.08);
+  --ja-shadow-lg: 0 8px 28px rgba(26, 43, 34, 0.12);
+  --ja-container: 1200px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ja-bg:         #0E1512;
+    --ja-bg-alt:     #14201A;
+    --ja-surface:    #16221C;
+    --ja-border:     #24352C;
+    --ja-text:       #E7EFEA;
+    --ja-text-muted: #A9B7B0;
+    --ja-link:       #5FB0E8;
+    --ja-primary:    #37B36A;
+    --ja-primary-light: #4CC77E;
+    --ja-secondary:  #4FA3DC;
+    --ja-shadow:     0 2px 8px rgba(0,0,0,0.5);
+    --ja-shadow-lg:  0 8px 28px rgba(0,0,0,0.6);
+  }
+}
+
+:root[data-theme="dark"] {
+  --ja-bg:         #0E1512;
+  --ja-bg-alt:     #14201A;
+  --ja-surface:    #16221C;
+  --ja-border:     #24352C;
+  --ja-text:       #E7EFEA;
+  --ja-text-muted: #A9B7B0;
+  --ja-link:       #5FB0E8;
+  --ja-primary:    #37B36A;
+  --ja-primary-light: #4CC77E;
+  --ja-secondary:  #4FA3DC;
+  --ja-shadow:     0 2px 8px rgba(0,0,0,0.5);
+  --ja-shadow-lg:  0 8px 28px rgba(0,0,0,0.6);
+}
+
+/* 2. BASE */
+body {
+  font-family: var(--ja-font-body);
+  font-size: var(--ja-fs-base);
+  line-height: var(--ja-lh-base);
+  color: var(--ja-text);
+  background-color: var(--ja-bg);
+}
+h1, h2, h3, h4, h5, h6, .entry-title, .site-title {
+  font-family: var(--ja-font-heading);
+  line-height: var(--ja-lh-heading);
+  color: var(--ja-text);
+}
+a { color: var(--ja-link); }
+a:hover, a:focus { color: var(--ja-primary); }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--ja-secondary);
+  outline-offset: 2px;
+}
+
+/* 3. BUTTONS / CTAs */
+.ja-btn,
+.woocommerce a.button, .woocommerce button.button, .woocommerce .button,
+.woocommerce #respond input#submit,
+.woocommerce a.button.alt, .woocommerce button.button.alt {
+  background-color: var(--ja-primary);
+  color: #ffffff;
+  border-radius: var(--ja-radius-sm);
+  font-family: var(--ja-font-heading);
+  font-weight: 600;
+  border: none;
+  transition: background-color .18s ease, transform .05s ease;
+}
+.woocommerce a.button:hover, .woocommerce button.button:hover,
+.woocommerce .button:hover, .woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover {
+  background-color: var(--ja-primary-dark);
+  color: #ffffff;
+}
+.ja-btn--accent { background-color: var(--ja-accent); color: #1A2B22; }
+.ja-btn--secondary { background-color: var(--ja-secondary); color: #fff; }
+
+/* 4. WOOCOMMERCE */
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
+  background: var(--ja-surface);
+  border: 1px solid var(--ja-border);
+  border-radius: var(--ja-radius);
+  box-shadow: var(--ja-shadow);
+  padding: 12px;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.woocommerce ul.products li.product:hover {
+  box-shadow: var(--ja-shadow-lg);
+  transform: translateY(-2px);
+}
+.woocommerce ul.products li.product .price,
+.woocommerce div.product p.price, .woocommerce div.product span.price {
+  color: var(--ja-primary-dark);
+  font-weight: 700;
+  font-family: var(--ja-font-heading);
+}
+.woocommerce span.onsale { background-color: var(--ja-accent); color: #1A2B22; border-radius: 999px; }
+.woocommerce .star-rating span::before, .woocommerce p.stars a::before { color: var(--ja-accent); }
+.ja-trust-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--ja-bg-alt); border: 1px solid var(--ja-border);
+  color: var(--ja-primary-dark); border-radius: 999px;
+  padding: 4px 12px; font-size: 0.85rem; font-weight: 600;
+}
+
+/* 5. HEADER / CART / SEARCH */
+.ja-sticky-header { position: sticky; top: 0; z-index: 999; background: var(--ja-surface); box-shadow: var(--ja-shadow); }
+.ja-search-form input[type="search"] {
+  border: 1px solid var(--ja-border); border-radius: 999px;
+  padding: 10px 18px; background: var(--ja-bg); color: var(--ja-text); width: 100%;
+}
+.ja-cart-count { background: var(--ja-accent); color: #1A2B22; border-radius: 999px; padding: 0 7px; font-size: .75rem; font-weight: 700; }
+
+/* 6. SECTIONS / UTILITY */
+.ja-section { padding: 56px 0; }
+.ja-section--alt { background: var(--ja-bg-alt); }
+.ja-container { max-width: var(--ja-container); margin: 0 auto; padding: 0 16px; }
+.ja-card { background: var(--ja-surface); border: 1px solid var(--ja-border); border-radius: var(--ja-radius); box-shadow: var(--ja-shadow); padding: 20px; }
+.ja-theme-toggle { background: transparent; border: 1px solid var(--ja-border); color: var(--ja-text); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+
+/* 7. MOBILE RESPONSIVE */
+@media (max-width: 921px) {
+  .ja-section { padding: 40px 0; }
+  .woocommerce a.button, .woocommerce button.button { min-height: 44px; }
+}
+@media (max-width: 544px) {
+  :root { --ja-fs-base: 15px; }
+  .ja-section { padding: 28px 0; }
+  .woocommerce ul.products[class*="columns-"] li.product { width: 100%; float: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

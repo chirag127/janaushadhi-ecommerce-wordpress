@@ -153,6 +153,12 @@ select:focus-visible, textarea:focus-visible {
 }
 
 /* 5. HEADER / CART / SEARCH */
+.ja-announcement-bar { background: var(--ja-primary); color: #fff; font-size: .85rem; }
+.ja-announcement-bar .ja-container { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 6px; padding-bottom: 6px; }
+.ja-announcement-bar .ja-helpline { color: #fff; }
+.ja-footer-trust { text-align: center; }
+.ja-footer-trust p { margin: 6px 0; color: var(--ja-text-muted); }
+.ja-copyright { color: var(--ja-text-muted); font-size: .85rem; }
 .ja-sticky-header { position: sticky; top: 0; z-index: 999; background: var(--ja-surface); box-shadow: var(--ja-shadow); }
 .ja-search-form input[type="search"] {
   border: 1px solid var(--ja-border); border-radius: 999px;
@@ -175,6 +181,7 @@ select:focus-visible, textarea:focus-visible {
 @media (max-width: 544px) {
   :root { --ja-fs-base: 15px; }
   .ja-section { padding: 28px 0; }
+  .ja-announcement-bar .ja-container { flex-direction: column; gap: 2px; text-align: center; }
   .woocommerce ul.products[class*="columns-"] li.product { width: 100%; float: none; }
 }
 @media (prefers-reduced-motion: reduce) {

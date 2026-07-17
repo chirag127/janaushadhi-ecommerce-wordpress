@@ -20,16 +20,20 @@ documented here, not by compiling application code.
 ```
 janaushadhi-ecommerce-wordpress/
 ├── README.md                     <- this file (structure + full setup runbook)
+├── AGENTS.md                     <- repo guide for AI agents
+├── LICENSE                       <- MIT
+├── .env.example                  <- placeholder Razorpay keys (names only)
 ├── docs/
 │   ├── plugin-list.md            <- required + recommended plugins
 │   ├── theme-config.md           <- base theme, child theme, palette, typography, dark mode
 │   ├── woocommerce-settings.md   <- store settings (INR, tax, shipping, Razorpay, checkout, accounts)
+│   ├── razorpay-integration.md   <- end-to-end Razorpay + COD payment setup
 │   ├── homepage-layout.md        <- Elementor homepage spec + About/Contact/FAQ notes
 │   ├── seo.md                    <- Rank Math config, sitemap, schema
 │   └── performance.md            <- Cloudflare CDN, caching, image optimization
 ├── theme/                        <- installable Astra child theme
 │   ├── style.css                 <- header + design tokens + WooCommerce/pharmacy styles + dark mode
-│   ├── functions.php             <- enqueue, WooCommerce support, tweaks, dark-mode toggle
+│   ├── functions.php             <- enqueue, WooCommerce support, header/footer, dark-mode toggle
 │   ├── woocommerce/
 │   │   └── product-searchform.php  <- WooCommerce template override (branded search)
 │   └── README.md                 <- theme install notes

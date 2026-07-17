@@ -109,6 +109,52 @@ function janaushadhi_helpline_shortcode() {
 add_shortcode( 'ja_helpline', 'janaushadhi_helpline_shortcode' );
 
 /**
+ * Header customization: announcement bar above the site header.
+ * Pushes free-delivery offer + helpline. Dependency-free (Astra hook).
+ */
+function janaushadhi_announcement_bar() {
+	echo '<div class="ja-announcement-bar"><div class="ja-container">'
+		. '<span>&#128666; Free delivery on orders over &#8377;500</span>'
+		. '<span>' . do_shortcode( '[ja_helpline]' ) . '</span>'
+		. '</div></div>';
+}
+add_action( 'astra_header_before', 'janaushadhi_announcement_bar' );
+
+/**
+ * Header customization: mark Astra's main header sticky so search + cart
+ * stay reachable on scroll. Adds the .ja-sticky-header class via filter.
+ */
+function janaushadhi_sticky_header_class( $classes ) {
+	$classes[] = 'ja-sticky-header';
+	return $classes;
+}
+add_filter( 'astra_site_header_class', 'janaushadhi_sticky_header_class' );
+
+/**
+ * Footer customization: trust / compliance strip above Astra's footer.
+ * Shows PMBJP mission line, helpline, and payment/COD reassurance.
+ */
+function janaushadhi_footer_trust_strip() {
+	echo '<div class="ja-footer-trust ja-section--alt"><div class="ja-container">'
+		. '<p class="ja-trust-badge">&#10003; Genuine generic medicines &middot; Govt. of India PMBJP</p>'
+		. '<p>Secure payments via Razorpay (UPI / cards / netbanking) &middot; Cash on Delivery available.</p>'
+		. '<p>' . do_shortcode( '[ja_helpline]' ) . '</p>'
+		. '</div></div>';
+}
+add_action( 'astra_footer_before', 'janaushadhi_footer_trust_strip' );
+
+/**
+ * Footer customization: replace Astra's default copyright with a
+ * Jan Aushadhi credit line (kept text-only, no emoji in chrome).
+ */
+function janaushadhi_footer_copyright( $output ) {
+	$year = gmdate( 'Y' );
+	return '<span class="ja-copyright">&copy; ' . esc_html( $year )
+		. ' Jan Aushadhi Generic Medicines. Under the Pradhan Mantri Bhartiya Janaushadhi Pariyojana.</span>';
+}
+add_filter( 'astra_footer_copyright', 'janaushadhi_footer_copyright' );
+
+/**
  * Lightweight, dependency-free dark-mode toggle.
  * Adds a small button to the footer that flips data-theme on <html>
  * and remembers the choice in localStorage. CSS variables in style.css

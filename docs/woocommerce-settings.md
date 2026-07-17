@@ -69,6 +69,8 @@ All admin paths are **WooCommerce > Settings > ...**. Never commit API keys.
 - **Rounding:** round at subtotal level.
 
 ## Payments (WooCommerce > Settings > Payments)
+> Full end-to-end steps (test keys, webhook, refunds, go-live) live in
+> `docs/razorpay-integration.md`. Placeholder keys: `.env.example`.
 ### Razorpay (primary, India)
 1. Install **Razorpay for WooCommerce**.
 2. In the **Razorpay Dashboard**, generate **Key ID** and **Key Secret**
